@@ -20,6 +20,12 @@ steps:
 - task: NuGetCommand@2
   inputs:
     restoreSolution: '$(solution)'
+- task: SonarQubePrepare@5
+  inputs:
+    SonarQube: 'Demo'
+    scannerMode: 'MSBuild'
+    projectKey: 'Testing_Integration_Testing_Integration'
+    projectName: 'Testing Integration'
 
 - task: VSBuild@1
   inputs:
@@ -32,3 +38,7 @@ steps:
   inputs:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
+- task: SonarQubeAnalyze@5
+- task: SonarQubePublish@5
+  inputs:
+    pollingTimeoutSec: '300'
