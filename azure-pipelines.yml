@@ -42,3 +42,9 @@ steps:
 - task: SonarQubePublish@5
   inputs:
     pollingTimeoutSec: '300'
+- task: HCLAppScanOnCloud@2
+  inputs:
+    AppSecTestService: 'AppScan HCL'
+    applications: '6fcc970f-fbca-4db4-8207-9671fb1a2313'
+    scanname: 'Demo4'
+    scantype: 'static'
